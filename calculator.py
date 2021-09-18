@@ -1,22 +1,33 @@
 while True:
-    ex = input("нажмите Y, для продолжения, а для выхода любую кнопку: ")
+    ex = input("Press y to continue: ")
     if ex.lower() == "y":
-        print('Программа  "Калькулятор"')
+        print('Welcome')
     else:
         break
-    onenumber = int(input("Введите первое число: "))
-    twonumber = int(input("Введите второе число: "))
-    znak = input("Введите один из знаков: +; -; *; /; ")
+    try:
+        onenumber = int(input("Enter the first number: "))
+    except ValueError:
+        print("You must enter a number!")
+        continue
+    try:
+        twonumber = int(input("Enter the second number: "))
+    except ValueError:
+        print("You must enter a number!")
+        continue
+    znak = input("+; -; *; /; Select arithmetic operation: ")
     if znak == "+":
         print(onenumber + twonumber)
+    elif znak == "-":
+        print(onenumber - twonumber)
+    elif znak == "/":
+        try:
+            print(onenumber / twonumber)
+        except ZeroDivisionError:
+            print("Cannot be divided by zero")
+            continue
+    elif znak == "*":
+        print(onenumber * twonumber)
+    elif znak == "**":
+        print(onenumber ** twonumber)
     else:
-        if znak == "-":
-            print(onenumber - twonumber)
-        else:
-            if znak == "*":
-                print(onenumber * twonumber)
-            else:
-                if znak == "/":
-                    print(onenumber / twonumber)
-                else:
-                    print("Неизвестная операция")
+        print("Unknown arithmetic operation")
